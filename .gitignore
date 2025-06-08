@@ -1,0 +1,7 @@
+.vscode/
+non_parallel_old1.cpp
+non_parallel_old2.cpp
+obj
+obj.o
+obj2
+__lhs,
