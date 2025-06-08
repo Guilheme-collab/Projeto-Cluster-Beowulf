@@ -1,3 +1,12 @@
+// --------------------------- GRUPO ------------------------------
+// Gabriel Derrel Martins Santee
+// Guilherme Ponciano Silva
+// Lucas Pereira Nunes
+// Ronaldo Oliveira de Jesus
+
+// --------------------------- GitHub -----------------------------
+// Código no Github:
+// https://github.com/Guilheme-collab/Projeto-Cluster-Beowulf
 #include <vector>
 #include <iostream>
 #include <functional>
@@ -7,18 +16,6 @@
 #include <openssl/md5.h>
 
 using namespace std;
-
-vector<unsigned char> StrToVector(string& s){
-    vector<unsigned char> vetor;
-    vetor.reserve(s.size());
-
-    if (!s.empty() && s.back() == '\0') {
-        vetor.assign(s.begin(), s.end() - 1);
-    } else {
-        vetor.assign(s.begin(), s.end());
-    }
-    return vetor;
-}
 
 string VectorToStr(const vector<unsigned char>& vetor){
     string str(vetor.begin(), vetor.end());
@@ -55,7 +52,6 @@ int main() {
             string senhaAtual = VectorToStr(tentativaSenha);
             string senhaAtualCrypto = md5(senhaAtual);
 
-            // Correção: usando a variável correta 'senhaMisteriosa'
             if (senhaAtualCrypto == senhaMisteriosa) {
                 encontrado = true;
                 cout << "A senha é: " << senhaAtual << "\n";
