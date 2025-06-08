@@ -22,6 +22,7 @@ string VectorToStr(const vector<unsigned char>& vetor){
     return str;
 }
 
+// Fonte: https://terminalroot.com.br/2022/08/como-gerar-hash-md5-com-cpp-e-openssl.html
 std::string md5(const std::string &str){
     unsigned char hash[MD5_DIGEST_LENGTH];
 
