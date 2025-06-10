@@ -14,6 +14,7 @@
 #include <iomanip>
 #include <sstream>
 #include <openssl/md5.h>
+#include <cstdint>
 
 using namespace std;
 
@@ -42,6 +43,8 @@ int main() {
     //string senhaMisteriosa = "7aa2d52c87d4e78738ecd70142af805c"; // DexterPas
     string senhaMisteriosa = "5eabcf4e5f25cec96078e633ad4ddf2c"; //Debs
     bool encontrado = false;
+
+    uint64_t iteradorVerificador = 0;
     
     //for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontrado; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
     for(int tamanhoSenha = 3; tamanhoSenha<=5 && !encontrado; tamanhoSenha++){
@@ -75,6 +78,10 @@ int main() {
                     terminou = true;
                 }
             }
+            if(iteradorVerificador%1000000 == 0){
+                cout << "Ainda Trabalhando " << iteradorVerificador/1000000 << " ...\n";
+            }
+            iteradorVerificador++;
         }
     }
     if(!encontrado){

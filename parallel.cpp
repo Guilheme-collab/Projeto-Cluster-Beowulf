@@ -15,6 +15,7 @@
 #include <sstream>
 #include <mpi.h>
 #include <openssl/md5.h>
+#include <cstdint>
 #define NUM_BITS 2
 
 using namespace std;
@@ -52,6 +53,8 @@ int main(int argc, char** argv) {
     
     bool encontradoLocal = false;
     bool encontradoGlobal = false;
+
+    uint64_t iteradorVerificador = 0;
     
     while(!encontradoGlobal){
         //for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontradoGlobal; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
@@ -108,6 +111,10 @@ int main(int argc, char** argv) {
                         terminou_tamanho_atual = true;
                     }
                 }
+                if(iteradorVerificador%1000000 == 0){
+                    cout << "Nó "<< rank << " ainda Trabalhando " << iteradorVerificador/1000000 << " ...\n";
+                }
+                iteradorVerificador++;
             }
         }
         MPI_Allreduce(MPI_IN_PLACE, &encontradoGlobal, 1, MPI_C_BOOL, MPI_LOR, MPI_COMM_WORLD);
