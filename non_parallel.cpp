@@ -22,29 +22,29 @@ string VectorToStr(const vector<unsigned char>& vetor){
     return str;
 }
 
-// Fonte: https://terminalroot.com.br/2022/08/como-gerar-hash-md5-com-cpp-e-openssl.html
-std::string md5(const std::string &str){
+string md5(const string &senha){
     unsigned char hash[MD5_DIGEST_LENGTH];
 
     MD5_CTX md5;
     MD5_Init(&md5);
-    MD5_Update(&md5, str.c_str(), str.size());
+    MD5_Update(&md5, senha.c_str(), senha.size());
     MD5_Final(hash, &md5);
 
-    std::stringstream ss;
+    stringstream ss;
 
     for(int i = 0; i < MD5_DIGEST_LENGTH; i++){
-        ss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>( hash[i] );
+        ss << hex << setw(2) << setfill('0') << static_cast<int>( hash[i] );
     }
     return ss.str();
 }
 
 int main() {
-    string senhaMisteriosa = "7aa2d52c87d4e78738ecd70142af805c"; // DexterPas
-    
+    //string senhaMisteriosa = "7aa2d52c87d4e78738ecd70142af805c"; // DexterPas
+    string senhaMisteriosa = "5eabcf4e5f25cec96078e633ad4ddf2c"; //Debs
     bool encontrado = false;
     
-    for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontrado; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
+    //for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontrado; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
+    for(int tamanhoSenha = 3; tamanhoSenha<=5 && !encontrado; tamanhoSenha++){
         bool terminou = false;
         vector<unsigned char> tentativaSenha(tamanhoSenha, 0x00);  // Inicia com todos os bytes em 0
 
