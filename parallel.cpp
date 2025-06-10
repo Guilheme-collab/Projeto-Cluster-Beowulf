@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
     //string senhaMisteriosa = "7aa2d52c87d4e78738ecd70142af805c"; // DexterPas
-    string senhaMisteriosa = "5eabcf4e5f25cec96078e633ad4ddf2c"; //Debs
+    string senhaMisteriosa = "38a03f670ea483d5ed5258e35f5a2d1d"; //Dex
     
     bool encontradoLocal = false;
     bool encontradoGlobal = false;
@@ -58,7 +58,7 @@ int main(int argc, char** argv) {
     
     while(!encontradoGlobal){
         //for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontradoGlobal; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
-        for(int tamanhoSenha = 3; tamanhoSenha<=5 && !encontradoGlobal; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
+        for(int tamanhoSenha = 2; tamanhoSenha<=5 && !encontradoGlobal; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
             bool terminou = false;
             vector<unsigned char> tentativaSenha(tamanhoSenha, 0x00);  // Inicia com todos os bytes em 0
             unsigned char prefixo_byte0 = (unsigned char)(rank << (8 - NUM_BITS));
