@@ -38,7 +38,7 @@ string md5(const string &senha){
     return ss.str();
 }
 
-int main() {
+int main(){
     //string senhaMisteriosa = "25771f6518f331cf9ab1f36db4d736f1"; // DeBrA
     string senhaMisteriosa = "38a03f670ea483d5ed5258e35f5a2d1d"; //Dex
     bool encontrado = false;
@@ -50,30 +50,31 @@ int main() {
         bool terminou = false;
         vector<unsigned char> tentativaSenha(tamanhoSenha, 0x00);  // Inicia com todos os bytes em 0
 
-        while (!terminou && !encontrado) {
+        while(!terminou && !encontrado){
             // Testa a tentativa atual
             string senhaAtual = VectorToStr(tentativaSenha);
             string senhaAtualCrypto = md5(senhaAtual);
 
-            if (senhaAtualCrypto == senhaMisteriosa) {
+            if(senhaAtualCrypto == senhaMisteriosa){
                 encontrado = true;
                 cout << "A senha é: " << senhaAtual << "\n";
             }
 
-            if (!encontrado) {
+            if(!encontrado){
                 int i = tamanhoSenha - 1;
                 bool incrementoRealizado = false;
 
-                while (i >= 0 && !incrementoRealizado) {
-                    if (tentativaSenha[i] < 0xFF) { // Menor que 255
+                while (i >= 0 && !incrementoRealizado){
+                    if(tentativaSenha[i] < 0xFF) { // Menor que 255
                         tentativaSenha[i]++;       // Incrementa o byte i
                         incrementoRealizado = true; // Sinaliza que o incremento foi feito, para sair do laço
-                    } else {
+                    }
+                    else{
                         tentativaSenha[i] = 0x00; // Se for 255, reseta o byte
                         i--;
                     }
                 }
-                if (i < 0) {
+                if(i < 0){
                     terminou = true;
                 }
             }
