@@ -14,7 +14,6 @@
 #include <iomanip>
 #include <sstream>
 #include <openssl/md5.h>
-#include <cstdint>
 
 using namespace std;
 
@@ -44,7 +43,7 @@ int main() {
     string senhaMisteriosa = "38a03f670ea483d5ed5258e35f5a2d1d"; //Dex
     bool encontrado = false;
 
-    uint64_t iteradorVerificador = 0;
+    unsigned int iteradorVerificador = 0;
     
     //for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontrado; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
     for(int tamanhoSenha = 2; tamanhoSenha<=2 && !encontrado; tamanhoSenha++){
@@ -80,6 +79,7 @@ int main() {
             }
             if(iteradorVerificador%1000000 == 0){
                 cout << "Ainda Trabalhando " << iteradorVerificador/1000000 << " ...\n";
+                iteradorVerificador = 0;
             }
             iteradorVerificador++;
         }
