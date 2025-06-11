@@ -4,4 +4,6 @@ non_parallel_old2.cpp
 non_parallel.o
 non_parallel
 parallel.cxx-mpi
+parallel_old1.cpp
+parallel_old2.cpp
 __lhs,
