@@ -39,14 +39,12 @@ string md5(const string &senha){
 }
 
 int main(){
-    //string senhaMisteriosa = "25771f6518f331cf9ab1f36db4d736f1"; // DeBrA
-    string senhaMisteriosa = "38a03f670ea483d5ed5258e35f5a2d1d"; //Dex
+    string senhaMisteriosa = "25771f6518f331cf9ab1f36db4d736f1"; // DeBrA
     bool encontrado = false;
 
     unsigned int iteradorVerificador = 0;
     
-    //for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontrado; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
-    for(int tamanhoSenha = 2; tamanhoSenha<=2 && !encontrado; tamanhoSenha++){
+    for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontrado; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
         bool terminou = false;
         vector<unsigned char> tentativaSenha(tamanhoSenha, 0x00);  // Inicia com todos os bytes em 0
 

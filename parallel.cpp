@@ -15,7 +15,7 @@
 #include <sstream>
 #include <mpi.h>
 #include <openssl/md5.h>
-#define NUM_BITS 2
+#define NUM_BITS 3
 #define PARAR 42
 
 using namespace std;
@@ -48,14 +48,12 @@ int main(int argc, char** argv){
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    //string senhaMisteriosa = "25771f6518f331cf9ab1f36db4d736f1"; // DeBrA
-    string senhaMisteriosa = "38a03f670ea483d5ed5258e35f5a2d1d"; //Dex
+    string senhaMisteriosa = "25771f6518f331cf9ab1f36db4d736f1"; // DeBrA
     
     bool encontrado = false;
     long long iteradorVerificador = 0;
     
-    //for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontrado; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
-    for(int tamanhoSenha = 2; tamanhoSenha <= 5 && !encontrado; tamanhoSenha++){
+    for(int tamanhoSenha = 5; tamanhoSenha<=10 && !encontrado; tamanhoSenha++){ // Testa senhas de 5 a 10 chars
         vector<unsigned char> tentativaSenha(tamanhoSenha, 0x00);
         unsigned char prefixo_byte0 = (unsigned char)(rank << (8 - NUM_BITS));
         tentativaSenha[0] = prefixo_byte0;
