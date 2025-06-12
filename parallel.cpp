@@ -15,7 +15,7 @@
 #include <sstream>
 #include <mpi.h>
 #include <openssl/md5.h>
-#define NUM_BITS 3
+#define NUM_BITS 2
 #define PARAR 42
 
 using namespace std;
