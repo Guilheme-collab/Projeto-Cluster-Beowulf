@@ -16,7 +16,7 @@
 #include <mpi.h>
 #include <openssl/md5.h>
 #define NUM_BITS 2
-#define PARAR 42
+#define PARAR_TAG 42 // Resposta para a vida, o universo e tudo mais
 
 using namespace std;
 
@@ -72,7 +72,7 @@ int main(int argc, char** argv){
             
             int mensagemChegou = 0; // Guardará o sinal de parada
             MPI_Status status;
-            MPI_Iprobe(MPI_ANY_SOURCE, PARAR, MPI_COMM_WORLD, &mensagemChegou, &status); // Verifica se existe algum sinal de parada emitido
+            MPI_Iprobe(MPI_ANY_SOURCE, PARAR_TAG, MPI_COMM_WORLD, &mensagemChegou, &status); // Verifica se existe algum sinal de parada emitido
             
             if(mensagemChegou){
                 encontrado = true;
@@ -88,7 +88,7 @@ int main(int argc, char** argv){
                 int sinalDeParada = 1;
                 for(int i = 0; i < size; ++i){
                     if(i != rank){
-                        MPI_Send(&sinalDeParada, 1, MPI_INT, i, PARAR, MPI_COMM_WORLD);
+                        MPI_Send(&sinalDeParada, 1, MPI_INT, i, PARAR_TAG, MPI_COMM_WORLD);
                     }
                 }
             }
